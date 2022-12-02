@@ -6,4 +6,224 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_kopi_2" />
+
+    <TextView
+        android:id="@+id/text_registrasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:includeFontPadding="false"
+        android:text="REGISTRATION"
+        android:textColor="#F4F4F4"
+        android:textSize="40sp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="320dp"
+        android:height="50dp"
+        android:background="@drawable/edit_text_login"
+        android:fontFamily="@font/poppins"
+        android:hint="Full Name"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="25dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:cornerRadius="40dp"
+        android:elevation="7dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_registrasi" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="320dp"
+        android:height="50dp"
+        android:background="@drawable/edit_text_login"
+        android:fontFamily="@font/poppins"
+        android:hint="@string/username"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="25dp"
+        android:elevation="7dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:cornerRadius="40dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fullname" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="320dp"
+        android:height="50dp"
+        android:background="@drawable/edit_text_login"
+        android:fontFamily="@font/poppins"
+        android:hint="Email"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="25dp"
+        android:elevation="7dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:cornerRadius="40dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/username" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="320dp"
+        android:height="50dp"
+        android:background="@drawable/edit_text_login"
+        android:fontFamily="@font/poppins"
+        android:hint="Password"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="25dp"
+        android:elevation="7dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:cornerRadius="40dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email" />
+
+    <EditText
+        android:id="@+id/confirm_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="320dp"
+        android:height="50dp"
+        android:background="@drawable/edit_text_login"
+        android:fontFamily="@font/poppins"
+        android:hint="Confirm Password"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="25dp"
+        android:elevation="7dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:cornerRadius="40dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="160dp"
+        android:height="50dp"
+        android:background="@drawable/button_login"
+        android:fontFamily="@font/poppins"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        android:elevation="7dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:cornerRadius="40dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_password" />
+
+    <TextView
+        android:id="@+id/tv_regtologin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:includeFontPadding="false"
+        android:text="@string/have_account"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_logo"
+        />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
+        android:text="or register with"
+        android:textColor="#F4F4F4"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_register"
+        />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/or"
+        android:gravity="center_horizontal"
+        android:id="@+id/layout_logo"
+        >
+
+        <ImageView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/or"
+            android:id="@+id/google_login"
+            android:layout_marginTop="10dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:srcCompat="@drawable/gugel_icon"
+            />
+
+        <ImageView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/or"
+            android:id="@+id/facebook_login"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:srcCompat="@drawable/facebook"
+            />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

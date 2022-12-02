@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "950906464081",
+    "firebase_url": "https://hackathon-2022-cd58b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "hackathon-2022-cd58b",
+    "storage_bucket": "hackathon-2022-cd58b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950906464081:android:1fc74baede489b0a545570",
+        "android_client_info": {
+          "package_name": "com.example.hackathon_telkom_university"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950906464081-87gv5afc6dh4c527pqce9ch83hasq318.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM-1VoNnS3zTq0vfxaBlIT1H2m8xfixqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950906464081-87gv5afc6dh4c527pqce9ch83hasq318.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

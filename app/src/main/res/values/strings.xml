@@ -2,4 +2,11 @@
     <string name="app_name">Hackathon-Telkom-University</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_kuypi">Welcome to KuyPi !</string>
+    <string name="login">LOGIN</string>
+    <string name="username">Username</string>
+    <string name="forgot"><u>Forgot Password?</u></string>
+    <string name="register"><font color="000000">Didn’t have an account? </font><u>Register Here.</u></string>
+    <string name="have_account"><font color="@color/white">already have an account? </font><font color="000000"><u>Login.</u></font></string>
+
 </resources>
