@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardview"
+    android:layout_width="260dp"
+    android:layout_height="140dp"
+    card_view:cardCornerRadius="5dp"
+    android:layout_marginHorizontal="7dp"
+    android:layout_marginBottom="10dp"
+    >
+    <ImageView
+        android:id="@+id/iv_bg_coffee"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@color/grey"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp">
+        <TextView
+            android:id="@+id/rec_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sekawan"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

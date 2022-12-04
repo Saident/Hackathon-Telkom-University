@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ProfileActivity extends AppCompatActivity {
+public class Second_ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +30,27 @@ public class ProfileActivity extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+                        startActivity(new Intent(getApplicationContext(), Second_SearchActivity.class));
                         overridePendingTransition(0,0);
+                        onPause();
                         return true;
                     case R.id.profile:
                         return true;
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                        startActivity(new Intent(getApplicationContext(), Second_HomeActivity.class));
                         overridePendingTransition(0,0);
+                        onPause();
                         return true;
                 }
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
+        super.onPause();
     }
 }

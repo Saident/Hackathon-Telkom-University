@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterActivity extends AppCompatActivity {
+public class First_RegisterActivity extends AppCompatActivity {
 
     protected FirebaseAuth mAuth;
     protected FirebaseDatabase firebaseDatabase;
@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         regtologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), First_LoginActivity.class));
             }
         });
         //end of initialize
@@ -118,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            User user = new User(fullname, username, email);
+                            Class_User user = new Class_User(fullname, username, email);
 
                             firebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -126,15 +126,15 @@ public class RegisterActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()){
-                                                Toast.makeText(RegisterActivity.this, "User has been created!", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                Toast.makeText(First_RegisterActivity.this, "Class_User has been created!", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(First_RegisterActivity.this, First_LoginActivity.class));
                                             }else{
-                                                Toast.makeText(RegisterActivity.this, "Failed to register!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(First_RegisterActivity.this, "Failed to register!", Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
                         }else{
-                            Toast.makeText(RegisterActivity.this, "Failed to register!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(First_RegisterActivity.this, "Failed to register!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

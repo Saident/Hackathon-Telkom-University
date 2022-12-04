@@ -16,10 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mapbox.maps.MapView;
-import com.mapbox.maps.Style;
-import com.mapbox.maps.plugin.Plugin;
 
-public class HomeActivity extends AppCompatActivity {
+public class Second_HomeActivity extends AppCompatActivity {
 
     protected TextView getuser;
     protected String name;
@@ -37,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
+                Class_User user = snapshot.getValue(Class_User.class);
                 getuser.setText(user.fullname);
             }
 
@@ -47,13 +45,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        mapView = findViewById(R.id.mapView);
-        mapView.getMapboxMap().loadStyleUri("mapbox://styles/saident/clb3e1zo4000b14p2ecp3tim4", new Style.OnStyleLoaded() {
-            @Override
-            public void onStyleLoaded(@NonNull Style style) {
-
-            }
-        });
+//        mapView = findViewById(R.id.mapView);
+//        mapView.getMapboxMap().loadStyleUri("mapbox://styles/saident/clb3e1zo4000b14p2ecp3tim4", new Style.OnStyleLoaded() {
+//            @Override
+//            public void onStyleLoaded(@NonNull Style style) {
+//
+//            }
+//        });
 
 
 
@@ -70,19 +68,28 @@ public class HomeActivity extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+                        startActivity(new Intent(getApplicationContext(), Second_SearchActivity.class));
                         overridePendingTransition(0,0);
+                        onPause();
                         return true;
                     case R.id.home:
                         return true;
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        startActivity(new Intent(getApplicationContext(), Second_ProfileActivity.class));
                         overridePendingTransition(0,0);
+                        onPause();
                         return true;
                 }
                 return false;
             }
         });
 
+    }
+
+    @Override
+    protected void onPause() {
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        super.onPause();
     }
 }
