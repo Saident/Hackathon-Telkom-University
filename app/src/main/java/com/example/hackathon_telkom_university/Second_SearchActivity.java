@@ -14,12 +14,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
+public class Second_SearchActivity extends AppCompatActivity {
 
     protected RecyclerView rec_recomm, rec_coffee, rec_working;
     protected ArrayList<String> list1, list2, list3;
     protected RecyclerView.LayoutManager RecyclerViewLayoutManager;
-    protected Adapter_Reccomend adapter_reccomend, adapter_coffee, adapter_working;
+    protected Adapter_Reccomend adapter_reccomend;
+    protected Adapter_Coffee adapter_coffee;
+    protected  Adapter_Working adapter_working;
     LinearLayoutManager HorizontalLayout;
     View ChildView;
     int RecyclerViewItemPosition;
@@ -48,14 +50,14 @@ public class SearchActivity extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                        startActivity(new Intent(getApplicationContext(), Second_HomeActivity.class));
                         overridePendingTransition(0,0);
                         onPause();
                         return true;
                     case R.id.search:
                         return true;
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        startActivity(new Intent(getApplicationContext(), Second_ProfileActivity.class));
                         overridePendingTransition(0,0);
                         onPause();
                         return true;
@@ -80,34 +82,34 @@ public class SearchActivity extends AppCompatActivity {
         rec_recomm.setLayoutManager(RecyclerViewLayoutManager);
         addItemsRecommend();
         adapter_reccomend = new Adapter_Reccomend(list1);
-        HorizontalLayout = new LinearLayoutManager(SearchActivity.this,
+        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         rec_recomm.setLayoutManager(HorizontalLayout);
         rec_recomm.setAdapter(adapter_reccomend);
     }
 
     private void buildCoffee(){
-        rec_recomm = (RecyclerView)findViewById(R.id.rec_coffee);
+        rec_coffee = (RecyclerView)findViewById(R.id.rec_coffee);
         RecyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rec_recomm.setLayoutManager(RecyclerViewLayoutManager);
+        rec_coffee.setLayoutManager(RecyclerViewLayoutManager);
         addItemsCoffee();
-        adapter_reccomend = new Adapter_Reccomend(list2);
-        HorizontalLayout = new LinearLayoutManager(SearchActivity.this,
-                LinearLayoutManager.HORIZONTAL, true);
-        rec_recomm.setLayoutManager(HorizontalLayout);
-        rec_recomm.setAdapter(adapter_coffee);
+        adapter_coffee = new Adapter_Coffee(list2);
+        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
+                LinearLayoutManager.HORIZONTAL, false);
+        rec_coffee.setLayoutManager(HorizontalLayout);
+        rec_coffee.setAdapter(adapter_coffee);
     }
 
     private void buildWorking(){
-        rec_recomm = (RecyclerView)findViewById(R.id.rec_working);
+        rec_working = (RecyclerView)findViewById(R.id.rec_working);
         RecyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rec_recomm.setLayoutManager(RecyclerViewLayoutManager);
+        rec_working.setLayoutManager(RecyclerViewLayoutManager);
         addItemsWorking();
-        adapter_reccomend = new Adapter_Reccomend(list3);
-        HorizontalLayout = new LinearLayoutManager(SearchActivity.this,
-                LinearLayoutManager.HORIZONTAL, true);
-        rec_recomm.setLayoutManager(HorizontalLayout);
-        rec_recomm.setAdapter(adapter_working);
+        adapter_working = new Adapter_Working(list3);
+        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
+                LinearLayoutManager.HORIZONTAL, false);
+        rec_working.setLayoutManager(HorizontalLayout);
+        rec_working.setAdapter(adapter_working);
     }
 
     private void addItemsRecommend() {

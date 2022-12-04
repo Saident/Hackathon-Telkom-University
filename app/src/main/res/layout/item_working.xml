@@ -4,13 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cardview"
     android:layout_width="260dp"
-    android:layout_height="200dp"
+    android:layout_height="140dp"
     card_view:cardCornerRadius="5dp"
-    card_view:cardElevation="8dp"
     android:layout_marginHorizontal="7dp"
+    android:layout_marginBottom="10dp"
     >
     <ImageView
-        android:id="@+id/iv_bg_recomm"
+        android:id="@+id/iv_bg_working"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@color/grey"/>
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="176dp">
+        android:layout_marginTop="120dp">
         <TextView
             android:id="@+id/rec_name"
             android:layout_width="wrap_content"

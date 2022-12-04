@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -20,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class LoginActivity extends AppCompatActivity{
+public class First_LoginActivity extends AppCompatActivity{
 
     protected FirebaseAuth mAuth;
     protected FirebaseDatabase firebaseDatabase;
@@ -56,7 +55,7 @@ public class LoginActivity extends AppCompatActivity{
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), First_RegisterActivity.class));
             }
         });
 
@@ -110,11 +109,11 @@ public class LoginActivity extends AppCompatActivity{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT);
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            Toast.makeText(First_LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT);
+                            startActivity(new Intent(First_LoginActivity.this, Second_HomeActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Failed to login!", Toast.LENGTH_SHORT);
+                            Toast.makeText(First_LoginActivity.this, "Failed to login!", Toast.LENGTH_SHORT);
                             return;
                         }
                     }
