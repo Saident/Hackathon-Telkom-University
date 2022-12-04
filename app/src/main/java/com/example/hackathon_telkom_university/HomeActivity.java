@@ -47,13 +47,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        mapView = findViewById(R.id.mapView);
-        mapView.getMapboxMap().loadStyleUri("mapbox://styles/saident/clb3e1zo4000b14p2ecp3tim4", new Style.OnStyleLoaded() {
-            @Override
-            public void onStyleLoaded(@NonNull Style style) {
-
-            }
-        });
+//        mapView = findViewById(R.id.mapView);
+//        mapView.getMapboxMap().loadStyleUri("mapbox://styles/saident/clb3e1zo4000b14p2ecp3tim4", new Style.OnStyleLoaded() {
+//            @Override
+//            public void onStyleLoaded(@NonNull Style style) {
+//
+//            }
+//        });
 
 
 
@@ -72,17 +72,26 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(),SearchActivity.class));
                         overridePendingTransition(0,0);
+                        onPause();
                         return true;
                     case R.id.home:
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                         overridePendingTransition(0,0);
+                        onPause();
                         return true;
                 }
                 return false;
             }
         });
 
+    }
+
+    @Override
+    protected void onPause() {
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        super.onPause();
     }
 }

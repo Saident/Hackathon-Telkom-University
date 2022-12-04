@@ -32,16 +32,25 @@ public class ProfileActivity extends AppCompatActivity {
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(),SearchActivity.class));
                         overridePendingTransition(0,0);
+                        onPause();
                         return true;
                     case R.id.profile:
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                         overridePendingTransition(0,0);
+                        onPause();
                         return true;
                 }
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
+        super.onPause();
     }
 }
