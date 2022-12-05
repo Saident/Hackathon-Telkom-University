@@ -10,9 +10,10 @@
     android:layout_marginBottom="10dp"
     >
     <ImageView
-        android:id="@+id/iv_bg_working"
+        android:id="@+id/iv_bg_coffee"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         android:src="@color/grey"/>
     <LinearLayout
         android:layout_width="wrap_content"

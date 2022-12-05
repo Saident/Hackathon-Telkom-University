@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Adapter_Coffee extends RecyclerView.Adapter<Adapter_Coffee.MyView> {
+public class Adapter_Search extends RecyclerView.Adapter<Adapter_Search.MyView> {
     private ArrayList<Class_Coffee> list;
     private Context context;
 
@@ -28,7 +28,7 @@ public class Adapter_Coffee extends RecyclerView.Adapter<Adapter_Coffee.MyView> 
         }
     }
 
-    public Adapter_Coffee(Context context, List<Class_Coffee> horizontalList) {
+    public Adapter_Search(Context context, List<Class_Coffee> horizontalList) {
         this.context = context;
         this.list = (ArrayList<Class_Coffee>) horizontalList;
     }
@@ -36,7 +36,7 @@ public class Adapter_Coffee extends RecyclerView.Adapter<Adapter_Coffee.MyView> 
     @Override
     public MyView onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context)
-                .inflate(R.layout.item_coffee, parent, false);
+                .inflate(R.layout.item_search, parent, false);
         return new MyView(itemView);
     }
 

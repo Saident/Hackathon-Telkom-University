@@ -11,17 +11,24 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class Second_SearchActivity extends AppCompatActivity {
 
     protected RecyclerView rec_recomm, rec_coffee, rec_working;
-    protected ArrayList<String> list1, list2, list3;
+    protected ArrayList<Class_Coffee> listSatu, listDua, listTiga = new ArrayList<Class_Coffee>();
     protected RecyclerView.LayoutManager RecyclerViewLayoutManager;
     protected Adapter_Reccomend adapter_reccomend;
     protected Adapter_Coffee adapter_coffee;
-    protected  Adapter_Working adapter_working;
+    protected Adapter_Working adapter_working;
+    protected Adapter_Search adapter_search;
+    protected DatabaseReference database;
     LinearLayoutManager HorizontalLayout;
     View ChildView;
     int RecyclerViewItemPosition;
@@ -32,17 +39,12 @@ public class Second_SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         //initialize recView
-        buildRecommend();
+        buildRecomm();
         buildCoffee();
         buildWorking();
 
-        // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-
-        // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.search);
-
-        // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -76,64 +78,79 @@ public class Second_SearchActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    private void buildRecommend(){
+    private void buildRecomm(){
         rec_recomm = (RecyclerView)findViewById(R.id.rec_recommend);
-        RecyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rec_recomm.setLayoutManager(RecyclerViewLayoutManager);
-        addItemsRecommend();
-        adapter_reccomend = new Adapter_Reccomend(list1);
+        listSatu = new ArrayList<Class_Coffee>();
+        database = FirebaseDatabase.getInstance().getReference("Coffee");
+        adapter_search = new Adapter_Search(this,listSatu);
+        rec_recomm.setAdapter(adapter_search);
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listSatu.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
+                    listSatu.add(post);
+                }
+                adapter_search.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
         HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         rec_recomm.setLayoutManager(HorizontalLayout);
-        rec_recomm.setAdapter(adapter_reccomend);
     }
 
     private void buildCoffee(){
         rec_coffee = (RecyclerView)findViewById(R.id.rec_coffee);
-        RecyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rec_coffee.setLayoutManager(RecyclerViewLayoutManager);
-        addItemsCoffee();
-        adapter_coffee = new Adapter_Coffee(list2);
+        listDua = new ArrayList<Class_Coffee>();
+        database = FirebaseDatabase.getInstance().getReference("Coffee");
+        adapter_coffee = new Adapter_Coffee(this,listDua);
+        rec_coffee.setAdapter(adapter_coffee);
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listDua.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
+                    listDua.add(post);
+                }
+                adapter_coffee.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
         HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         rec_coffee.setLayoutManager(HorizontalLayout);
-        rec_coffee.setAdapter(adapter_coffee);
     }
 
     private void buildWorking(){
         rec_working = (RecyclerView)findViewById(R.id.rec_working);
-        RecyclerViewLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rec_working.setLayoutManager(RecyclerViewLayoutManager);
-        addItemsWorking();
-        adapter_working = new Adapter_Working(list3);
+        listTiga = new ArrayList<Class_Coffee>();
+        database = FirebaseDatabase.getInstance().getReference("Coffee");
+        adapter_working = new Adapter_Working(this,listTiga);
+        rec_working.setAdapter(adapter_working);
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listTiga.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
+                    listTiga.add(post);
+                }
+                adapter_working.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
         HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
                 LinearLayoutManager.HORIZONTAL, false);
         rec_working.setLayoutManager(HorizontalLayout);
-        rec_working.setAdapter(adapter_working);
-    }
-
-    private void addItemsRecommend() {
-        list1 = new ArrayList<>();
-        list1.add("1");
-        list1.add("2");
-        list1.add("3");
-        list1.add("4");
-    }
-
-    private void addItemsCoffee() {
-        list2 = new ArrayList<>();
-        list2.add("1");
-        list2.add("2");
-        list2.add("3");
-        list2.add("4");
-    }
-
-    private void addItemsWorking() {
-        list3 = new ArrayList<>();
-        list3.add("1");
-        list3.add("2");
-        list3.add("3");
-        list3.add("4");
     }
 
 }
