@@ -24,7 +24,6 @@ public class Second_SearchActivity extends AppCompatActivity {
     protected RecyclerView rec_recomm, rec_coffee, rec_working;
     protected ArrayList<Class_Coffee> listSatu, listDua, listTiga = new ArrayList<Class_Coffee>();
     protected RecyclerView.LayoutManager RecyclerViewLayoutManager;
-    protected Adapter_Reccomend adapter_reccomend;
     protected Adapter_Coffee adapter_coffee;
     protected Adapter_Working adapter_working;
     protected Adapter_Search adapter_search;
