@@ -42,6 +42,19 @@ public class Second_SearchActivity extends AppCompatActivity {
         buildCoffee();
         buildWorking();
 
+        botNav();
+
+    }
+
+
+    @Override
+    protected void onPause() {
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.search);
+        super.onPause();
+    }
+
+    private void botNav(){
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.search);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,15 +79,6 @@ public class Second_SearchActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-    }
-
-
-    @Override
-    protected void onPause() {
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.search);
-        super.onPause();
     }
 
     private void buildRecomm(){
