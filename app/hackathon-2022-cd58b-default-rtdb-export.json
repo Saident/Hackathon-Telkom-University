@@ -1,0 +1,31 @@
+{
+  "Users": {
+    "3bcH5U3Dm5NICpskY5H8a2T6DzX2": {
+      "email": "test@gmail.com",
+      "fullname": "Averil",
+      "username": "ident"
+    },
+    "c55Og1RqFfWw8TDFJARy60K7DUa2": {
+      "email": "123@gmail.com",
+      "fullname": "ican",
+      "username": "ican"
+    }
+  },
+  "Coffee": {
+    "1": {
+      "name": "semusim",
+      "imageref": "test",
+      "location": "https://firebasestorage.googleapis.com/v0/b/hackathon-2022-cd58b.appspot.com/o/images%2Fsemusim%20ppic%201.png?alt=media&token=3a035109-bdca-48a8-93cd-6993683c9d4d"
+    },
+    "2": {
+      "name": "test",
+      "imageref": "test",
+      "location": "test"
+    },
+    "3": {
+      "name": "test",
+      "imageref": "test",
+      "location": "test"
+    }
+  }
+}
