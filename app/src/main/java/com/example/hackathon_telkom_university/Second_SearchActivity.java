@@ -10,6 +10,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +30,6 @@ public class Second_SearchActivity extends AppCompatActivity {
     protected RecyclerView rec_recomm, rec_coffee, rec_working;
     protected ArrayList<Class_Coffee> listSatu, listDua, listTiga = new ArrayList<Class_Coffee>();
     protected RecyclerView.LayoutManager RecyclerViewLayoutManager;
-    protected Adapter_Reccomend adapter_reccomend;
     protected Adapter_Coffee adapter_coffee;
     protected Adapter_Working adapter_working;
     protected Adapter_Search adapter_search;
@@ -32,6 +37,8 @@ public class Second_SearchActivity extends AppCompatActivity {
     LinearLayoutManager HorizontalLayout;
     View ChildView;
     int RecyclerViewItemPosition;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,18 @@ public class Second_SearchActivity extends AppCompatActivity {
         buildCoffee();
         buildWorking();
 
+        botNav();
+
+    }
+
+    @Override
+    protected void onPause() {
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.search);
+        super.onPause();
+    }
+
+    private void botNav(){
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.search);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -67,15 +86,6 @@ public class Second_SearchActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-    }
-
-
-    @Override
-    protected void onPause() {
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.search);
-        super.onPause();
     }
 
     private void buildRecomm(){

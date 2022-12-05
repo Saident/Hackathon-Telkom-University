@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -17,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mapbox.maps.MapView;
 
-public class Second_HomeActivity extends AppCompatActivity {
+public class Second_HomeActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     protected TextView getuser;
     protected String name;
@@ -45,6 +50,14 @@ public class Second_HomeActivity extends AppCompatActivity {
             }
         });
 
+
+        SupportMapFragment mapFragment = SupportMapFragment.newInstance();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.map, mapFragment)
+                .commit();
+        mapFragment.getMapAsync(this);
+
 //        mapView = findViewById(R.id.mapView);
 //        mapView.getMapboxMap().loadStyleUri("mapbox://styles/saident/clb3e1zo4000b14p2ecp3tim4", new Style.OnStyleLoaded() {
 //            @Override
@@ -52,8 +65,6 @@ public class Second_HomeActivity extends AppCompatActivity {
 //
 //            }
 //        });
-
-
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -84,6 +95,13 @@ public class Second_HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(0, 0))
+                .title("Marker"));
     }
 
     @Override
