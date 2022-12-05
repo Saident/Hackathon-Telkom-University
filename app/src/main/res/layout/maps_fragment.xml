@@ -3,5 +3,16 @@
     xmlns:map="http://schemas.android.com/apk/res-auto"
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:id="@+id/map"
+    map:mapId="78862ec95d092034"
+    map:cameraZoom="13"
+    map:mapType="normal"
+    map:uiCompass="false"
+    map:uiRotateGestures="true"
+    map:uiScrollGestures="false"
+    map:uiTiltGestures="true"
+    map:uiZoomControls="false"
+    map:uiZoomGestures="true"
+    map:cameraTilt="30"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    />
