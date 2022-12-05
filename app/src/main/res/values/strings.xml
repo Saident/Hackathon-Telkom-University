@@ -10,7 +10,7 @@
     <string name="have_account"><font color="@color/white">already have an account? </font><font color="000000"><u>Login.</u></font></string>
     <string name="map_id">78862ec95d092034</string>
 
-<!--    MapBox API TOKEN-->
+    <!--    MapBox API TOKEN-->
     <string name="mapbox_access_token">sk.eyJ1Ijoic2FpZGVudCIsImEiOiJjbGFmazI1d20xNHVlM3FzM3Q4c3ltZ3RiIn0.uf_Szw_dBgIzLpCpIX7gOg</string>
 
 </resources>

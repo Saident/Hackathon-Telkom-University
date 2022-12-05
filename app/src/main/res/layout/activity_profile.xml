@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,22 +7,348 @@
     android:layout_height="match_parent"
     tools:context=".Second_ProfileActivity">
 
-    <TextView
+    <ImageView
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
+        android:id="@+id/bg_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        app:srcCompat="@drawable/bg_profile"
+        />
+
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile_pic"
+        />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Aurellia Soebandono"
+        android:textColor="#4D4D4D"
+        android:textSize="20sp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_pic"
+        />
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_name"
+        app:flow_horizontalAlign="center"
+        android:layout_marginTop="50dp"
+        android:id="@+id/layout_edit_profile"
+        >
+
+    <ImageView
+        android:layout_alignParentLeft="true"
+        android:id="@+id/edit_profile_logo"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/edit_profile_logo"
+        />
+
+        <TextView
+            android:id="@+id/edit_profile_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Edit Profile"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            />
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:id="@+id/arrow_right_edit_profile"
+        android:layout_gravity="right"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/arrow_right"
+        />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_edit_profile"
+        app:flow_horizontalAlign="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout_favorite"
+        >
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/favorite_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/favorite_logo"
+            />
+
+        <TextView
+            android:id="@+id/favorite_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Favorite"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/arrow_right_favorite"
+            android:layout_gravity="right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:srcCompat="@drawable/arrow_right"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_favorite"
+        app:flow_horizontalAlign="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout_settings"
+        >
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/settings_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/settings_logo"
+            />
+
+        <TextView
+            android:id="@+id/settings_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Settings"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/arrow_right_settings"
+            android:layout_gravity="right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:srcCompat="@drawable/arrow_right"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_settings"
+        app:flow_horizontalAlign="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout_security"
+        >
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/security_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/security_logo"
+            />
+
+        <TextView
+            android:id="@+id/security_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Security"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/arrow_right_security"
+            android:layout_gravity="right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:srcCompat="@drawable/arrow_right"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_security"
+        app:flow_horizontalAlign="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout_report"
+        >
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/report_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/report_logo"
+            />
+
+        <TextView
+            android:id="@+id/report_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Report a Problem"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/arrow_right_report"
+            android:layout_gravity="right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:srcCompat="@drawable/arrow_right"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_report"
+        app:flow_horizontalAlign="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout_term"
+        >
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/term_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/term_logo"
+            />
+
+        <TextView
+            android:id="@+id/term_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Term of Use"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/arrow_right_term"
+            android:layout_gravity="right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:srcCompat="@drawable/arrow_right"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_term"
+        app:flow_horizontalAlign="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout_logout"
+        >
+
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/logout_logo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/logout_logo"
+            />
+
+        <TextView
+            android:id="@+id/logout_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Log Out"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            />
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/arrow_right_logout"
+            android:layout_gravity="right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:srcCompat="@drawable/arrow_right"
+            />
+
+    </RelativeLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/teal_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:itemBackground="@color/cream"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
