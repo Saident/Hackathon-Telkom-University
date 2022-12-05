@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -41,7 +42,7 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Class_User user = snapshot.getValue(Class_User.class);
-                getuser.setText(user.fullname);
+                getuser.setText("Hello, " + user.fullname);
             }
 
             @Override
@@ -102,12 +103,21 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(0, 0))
                 .title("Marker"));
+
+        GoogleMapOptions options = new GoogleMapOptions();
+        options.mapId(String.valueOf(R.string.map_id))
+                .compassEnabled(true)
+                .rotateGesturesEnabled(false)
+                .tiltGesturesEnabled(false);
     }
 
     @Override
     protected void onPause() {
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
+
+
+
         super.onPause();
     }
 }
