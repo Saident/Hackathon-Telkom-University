@@ -14,8 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_Search extends RecyclerView.Adapter<Adapter_Search.MyView> {
-    private ArrayList<Class_Coffee> list;
+    private List<Class_Coffee> list;
     private Context context;
+
+    public void setFilteredList(List<Class_Coffee> filteredList){
+        this.list = filteredList;
+        notifyDataSetChanged();
+    }
 
     public class MyView extends RecyclerView.ViewHolder {
         TextView name;
@@ -28,9 +33,9 @@ public class Adapter_Search extends RecyclerView.Adapter<Adapter_Search.MyView> 
         }
     }
 
-    public Adapter_Search(Context context, List<Class_Coffee> horizontalList) {
+    public Adapter_Search(Context context, List<Class_Coffee> VerticalLayout) {
         this.context = context;
-        this.list = (ArrayList<Class_Coffee>) horizontalList;
+        this.list = (ArrayList<Class_Coffee>) VerticalLayout;
     }
 
     @Override
