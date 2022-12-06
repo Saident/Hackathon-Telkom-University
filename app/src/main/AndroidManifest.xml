@@ -16,7 +16,28 @@
         android:theme="@style/Theme.HackathonTelkomUniversity"
         tools:targetApi="31">
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".Third_CoWorkingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Third_CoffeeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Third_RecommendActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Third_EditProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

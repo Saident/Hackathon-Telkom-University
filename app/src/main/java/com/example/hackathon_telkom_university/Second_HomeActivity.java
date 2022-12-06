@@ -59,20 +59,10 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
                 .commit();
         mapFragment.getMapAsync(this);
 
-//        mapView = findViewById(R.id.mapView);
-//        mapView.getMapboxMap().loadStyleUri("mapbox://styles/saident/clb3e1zo4000b14p2ecp3tim4", new Style.OnStyleLoaded() {
-//            @Override
-//            public void onStyleLoaded(@NonNull Style style) {
-//
-//            }
-//        });
-
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
-
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
