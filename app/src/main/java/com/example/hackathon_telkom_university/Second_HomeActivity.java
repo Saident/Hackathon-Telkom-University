@@ -2,8 +2,12 @@ package com.example.hackathon_telkom_university;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -12,6 +16,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,7 +32,10 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
 
     protected TextView getuser;
     protected String name;
-    protected MapView mapView;
+    private static final String TAG = Second_HomeActivity.class.getSimpleName();
+    protected final int LOCATION_PERMISSION_CODE = 101;
+    private GoogleMap mMap;
+    private CameraPosition cameraPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +59,20 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
             }
         });
 
+        if (isLocationPermissionGranted()){
+            SupportMapFragment mapFragment = SupportMapFragment.newInstance();
+//            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+//                    .findFragmentById(R.id.map);
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.map, mapFragment)
+                    .commit();
+            mapFragment.getMapAsync(this);
+        }else{
+            requestLocationPermission();
+        }
 
-        SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.map, mapFragment)
-                .commit();
-        mapFragment.getMapAsync(this);
+
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -90,23 +105,41 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(0, 0))
-                .title("Marker"));
-
+        mMap = googleMap;
         GoogleMapOptions options = new GoogleMapOptions();
         options.mapId(String.valueOf(R.string.map_id))
                 .compassEnabled(true)
                 .rotateGesturesEnabled(false)
                 .tiltGesturesEnabled(false);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+            mMap.setTrafficEnabled(true);
+        }
+
+
+    }
+
+    protected boolean isLocationPermissionGranted(){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    private void requestLocationPermission(){
+        ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
+                LOCATION_PERMISSION_CODE);
     }
 
     @Override
     protected void onPause() {
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
-
-
+        onMapReady(mMap);
 
         super.onPause();
     }
