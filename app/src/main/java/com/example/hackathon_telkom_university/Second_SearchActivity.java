@@ -120,6 +120,7 @@ public class Second_SearchActivity extends AppCompatActivity {
         if (filteredList.isEmpty()){
             Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
             filteredList.clear();
+            adapter_search.setFilteredList(filteredList);
         }else {
             adapter_search.setFilteredList(filteredList);
         }
@@ -150,79 +151,79 @@ public class Second_SearchActivity extends AppCompatActivity {
         rec_search.setLayoutManager(VerticalLayout);
     }
 
-//    private void buildRecomm(){
-//        rec_recomm = (RecyclerView)findViewById(R.id.rec_recommend);
-//        listSatu = new ArrayList<Class_Coffee>();
-//        database = FirebaseDatabase.getInstance().getReference("Coffee");
-//        adapter_search = new Adapter_Search(this,listSatu);
-//        rec_recomm.setAdapter(adapter_search);
-//        database.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                listSatu.clear();
-//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
-//                    listSatu.add(post);
-//                }
-//                adapter_search.notifyDataSetChanged();
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
-//        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
-//                LinearLayoutManager.HORIZONTAL, false);
-//        rec_recomm.setLayoutManager(HorizontalLayout);
-//    }
-//
-//    private void buildCoffee(){
-//        rec_coffee = (RecyclerView)findViewById(R.id.rec_coffee);
-//        listDua = new ArrayList<Class_Coffee>();
-//        database = FirebaseDatabase.getInstance().getReference("Coffee");
-//        adapter_coffee = new Adapter_Coffee(this,listDua);
-//        rec_coffee.setAdapter(adapter_coffee);
-//        database.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                listDua.clear();
-//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
-//                    listDua.add(post);
-//                }
-//                adapter_coffee.notifyDataSetChanged();
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
-//        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
-//                LinearLayoutManager.HORIZONTAL, false);
-//        rec_coffee.setLayoutManager(HorizontalLayout);
-//    }
-//
-//    private void buildWorking(){
-//        rec_working = (RecyclerView)findViewById(R.id.rec_working);
-//        listTiga = new ArrayList<Class_Coffee>();
-//        database = FirebaseDatabase.getInstance().getReference("Coffee");
-//        adapter_working = new Adapter_Working(this,listTiga);
-//        rec_working.setAdapter(adapter_working);
-//        database.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                listTiga.clear();
-//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
-//                    listTiga.add(post);
-//                }
-//                adapter_working.notifyDataSetChanged();
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
-//        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
-//                LinearLayoutManager.HORIZONTAL, false);
-//        rec_working.setLayoutManager(HorizontalLayout);
-//    }
+    private void buildRecomm(){
+        rec_recomm = (RecyclerView)findViewById(R.id.rec_recommend);
+        listSatu = new ArrayList<Class_Coffee>();
+        database = FirebaseDatabase.getInstance().getReference("Coffee");
+        adapter_search = new Adapter_Search(this,listSatu);
+        rec_recomm.setAdapter(adapter_search);
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listSatu.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
+                    listSatu.add(post);
+                }
+                adapter_search.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
+                LinearLayoutManager.HORIZONTAL, false);
+        rec_recomm.setLayoutManager(HorizontalLayout);
+    }
+
+    private void buildCoffee(){
+        rec_coffee = (RecyclerView)findViewById(R.id.rec_coffee);
+        listDua = new ArrayList<Class_Coffee>();
+        database = FirebaseDatabase.getInstance().getReference("Coffee");
+        adapter_coffee = new Adapter_Coffee(this,listDua);
+        rec_coffee.setAdapter(adapter_coffee);
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listDua.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
+                    listDua.add(post);
+                }
+                adapter_coffee.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
+                LinearLayoutManager.HORIZONTAL, false);
+        rec_coffee.setLayoutManager(HorizontalLayout);
+    }
+
+    private void buildWorking(){
+        rec_working = (RecyclerView)findViewById(R.id.rec_working);
+        listTiga = new ArrayList<Class_Coffee>();
+        database = FirebaseDatabase.getInstance().getReference("Coffee");
+        adapter_working = new Adapter_Working(this,listTiga);
+        rec_working.setAdapter(adapter_working);
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listTiga.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
+                    listTiga.add(post);
+                }
+                adapter_working.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        HorizontalLayout = new LinearLayoutManager(Second_SearchActivity.this,
+                LinearLayoutManager.HORIZONTAL, false);
+        rec_working.setLayoutManager(HorizontalLayout);
+    }
 
 }
