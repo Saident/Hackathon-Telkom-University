@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,14 +33,24 @@ import java.util.List;
 public class Second_SearchActivity extends AppCompatActivity {
 
     protected RecyclerView rec_recomm, rec_coffee, rec_working, rec_search;
-    protected ArrayList<Class_Coffee> listSatu, listDua, listTiga = new ArrayList<Class_Coffee>();
+    protected ArrayList<Class_Coffee>
+            listSearch = new ArrayList<Class_Coffee>(),
+            listSatu = new ArrayList<Class_Coffee>(),
+            listDua = new ArrayList<Class_Coffee>(),
+            listTiga = new ArrayList<Class_Coffee>();
     protected RecyclerView.LayoutManager RecyclerViewLayoutManager;
     protected Adapter_Coffee adapter_coffee;
     protected Adapter_Working adapter_working;
     protected Adapter_Search adapter_search;
+    protected Adapter_Recomm adapter_recomm;
     protected androidx.appcompat.widget.SearchView searchView;
     protected DatabaseReference database;
-    LinearLayoutManager HorizontalLayout, VerticalLayout;
+    protected LinearLayoutManager HorizontalLayout, VerticalLayout;
+
+    protected LinearLayout linearSearch;
+
+    protected TextView tv_rec, tv_coffee, tv_working;
+
     View ChildView;
     int RecyclerViewItemPosition;
 
@@ -48,9 +60,9 @@ public class Second_SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         //initialize recView
-//        buildRecomm();
-//        buildCoffee();
-//        buildWorking();
+        buildRecomm();
+        buildCoffee();
+        buildWorking();
         buildSearchView();
         buildSearch();
 
@@ -94,6 +106,7 @@ public class Second_SearchActivity extends AppCompatActivity {
 
     private void buildSearchView(){
         searchView = findViewById(R.id.search_bar);
+        linearSearch = findViewById(R.id.linearSearch);
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
@@ -103,14 +116,20 @@ public class Second_SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filterList(newText);
-                rec_search.setVisibility(View.VISIBLE);
+                if (newText.isEmpty()) {
+                    linearSearch.setVisibility(View.GONE);
+                }else{
+                    linearSearch.setVisibility(View.VISIBLE);
+                    filterList(newText);
+                }
                 return true;
             }
         });
     }
 
     private void filterList(String s) {
+        linearSearch = findViewById(R.id.linearSearch);
+        rec_search = findViewById(R.id.rec_search);
         List<Class_Coffee> filteredList = new ArrayList<>();
         for (Class_Coffee classCoffee : listSatu){
             if (classCoffee.getNameCoffee().toLowerCase().contains(s.toLowerCase())){
@@ -128,17 +147,17 @@ public class Second_SearchActivity extends AppCompatActivity {
 
     private void buildSearch(){
         rec_search = (RecyclerView)findViewById(R.id.rec_search);
-        listSatu = new ArrayList<Class_Coffee>();
+        listSearch = new ArrayList<Class_Coffee>();
         database = FirebaseDatabase.getInstance().getReference("Coffee");
-        adapter_search = new Adapter_Search(this,listSatu);
+        adapter_search = new Adapter_Search(this,listSearch);
         rec_search.setAdapter(adapter_search);
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listSatu.clear();
+                listSearch.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
-                    listSatu.add(post);
+                    listSearch.add(post);
                 }
                 adapter_search.notifyDataSetChanged();
             }
@@ -155,8 +174,8 @@ public class Second_SearchActivity extends AppCompatActivity {
         rec_recomm = (RecyclerView)findViewById(R.id.rec_recommend);
         listSatu = new ArrayList<Class_Coffee>();
         database = FirebaseDatabase.getInstance().getReference("Coffee");
-        adapter_search = new Adapter_Search(this,listSatu);
-        rec_recomm.setAdapter(adapter_search);
+        adapter_recomm = new Adapter_Recomm(this,listSatu);
+        rec_recomm.setAdapter(adapter_recomm);
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -165,7 +184,7 @@ public class Second_SearchActivity extends AppCompatActivity {
                     Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
                     listSatu.add(post);
                 }
-                adapter_search.notifyDataSetChanged();
+                adapter_recomm.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

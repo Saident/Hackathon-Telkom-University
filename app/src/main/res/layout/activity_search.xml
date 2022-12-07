@@ -8,21 +8,6 @@
     android:scrollbars="vertical"
     tools:context=".Second_SearchActivity">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rec_search"
-        android:layout_width="270dp"
-        android:layout_height="700dp"
-        android:scrollbars="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_bar"
-        tools:listitem="@layout/item_search">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
     <Button
         android:id="@+id/bt_filter"
         android:layout_width="44dp"
@@ -60,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="horizontal"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_rec"
@@ -81,6 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="horizontal"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_coffee"
@@ -102,10 +89,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="horizontal"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_working"
                 tools:listitem="@layout/item_working" />
+
+    <LinearLayout
+        android:id="@+id/linearSearch"
+        android:layout_width="match_parent"
+        android:layout_height="570dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_search"
+            android:layout_width="match_parent"
+            android:layout_height="570dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_bar"
+            tools:listitem="@layout/item_search">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

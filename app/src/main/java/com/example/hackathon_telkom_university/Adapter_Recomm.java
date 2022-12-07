@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class Adapter_Recomm extends RecyclerView.Adapter<Adapter_Recomm.MyView> 
     @Override
     public MyView onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context)
-                .inflate(R.layout.item_recommend, parent, false);
+                .inflate(R.layout.item_working, parent, false);
         return new MyView(itemView);
     }
 
