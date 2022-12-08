@@ -59,13 +59,13 @@ public class Second_ProfileActivity extends AppCompatActivity {
             }
         });
 
-//        edit_profile = findViewById(R.id.layout_edit_profile);
-//        edit_profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(Second_ProfileActivity.this, Third_EditProfileActivity.class));
-//            }
-//        });
+        edit_profile = findViewById(R.id.layout_edit_profile);
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Second_ProfileActivity.this, Third_EditProfileActivity.class));
+            }
+        });
         botNav();
     }
 
