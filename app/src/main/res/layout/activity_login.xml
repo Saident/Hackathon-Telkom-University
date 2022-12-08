@@ -155,53 +155,53 @@
         app:layout_constraintTop_toBottomOf="@id/button_login"
         />
 
-    <TextView
-        android:id="@+id/or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins"
-        android:includeFontPadding="false"
-        android:text="Or login with"
-        android:textColor="#F4F4F4"
-        android:textSize="14sp"
-        android:layout_marginTop="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/or"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/poppins"-->
+<!--        android:includeFontPadding="false"-->
+<!--        android:text="Or login with"-->
+<!--        android:textColor="#F4F4F4"-->
+<!--        android:textSize="14sp"-->
+<!--        android:layout_marginTop="18dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/register"-->
+<!--        />-->
 
-    <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/or"
-        android:gravity="center_horizontal"
-        >
+<!--    <LinearLayout-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/or"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        >-->
 
-        <ImageView
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/or"
-                android:id="@+id/google_login"
-                android:layout_marginTop="10dp"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                app:srcCompat="@drawable/gugel_icon"
-            />
+<!--        <ImageView-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/or"-->
+<!--                android:id="@+id/google_login"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                app:srcCompat="@drawable/gugel_icon"-->
+<!--            />-->
 
-        <ImageView
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/or"
-            android:id="@+id/facebook_login"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            app:srcCompat="@drawable/facebook"
-            />
+<!--        <ImageView-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/or"-->
+<!--            android:id="@+id/facebook_login"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="35dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            app:srcCompat="@drawable/facebook"-->
+<!--            />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
