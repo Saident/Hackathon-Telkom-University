@@ -14,15 +14,6 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"/>-->
 
-<!--    <com.google.android.gms.maps.MapView-->
-<!--        android:id="@+id/map"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        map:mapId="@string/map_id"/>-->
-
     <TextView
         android:id="@+id/getUser"
         android:layout_width="wrap_content"
@@ -60,74 +51,109 @@
         sothree:umanoPanelHeight="70dp"
         sothree:umanoShadowHeight="4dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
+        <ImageView
+            android:id="@+id/remover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
             android:gravity="center"
             android:textSize="16sp" />
 
         <RelativeLayout
             android:id="@+id/dragView"
-            android:layout_marginTop="20dp"
-            android:background="@color/grey"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/scrollIndicator"
-                android:layout_margin="5dp"
-                android:layout_width="200dp"
-                android:layout_height="10dp"
-                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:id="@+id/bg_menu_coffee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_menu_coffee"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentTop="true"
-                android:src="@color/black"/>
+                />
+
+
+            <ImageView
+                android:id="@+id/scrollIndicator"
+                android:layout_width="170dp"
+                android:layout_height="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/scroll_indicator"
+                />
 
             <ImageView
                 android:id="@+id/imageCafe"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_below="@+id/scrollIndicator"
-                android:layout_margin="10dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:src="@color/grey">
-            </ImageView>
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg" />
 
             <TextView
                 android:id="@+id/cafe_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NAKOA CAFE"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/imageCafe"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="20dp"
+                android:textColor="#1A0700"
+                android:text="Nakoa Cafe" />
 
             <ImageView
-                android:layout_width="48dp"
+                android:id="@+id/profile_pic_cafe"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@color/grey"
-                android:layout_alignParentEnd="true"
                 android:layout_below="@id/imageCafe"
-                android:layout_margin="10dp"/>
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/logo" />
 
             <TextView
                 android:id="@+id/abt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="About Us"
                 android:layout_below="@id/cafe_name"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="#1A0700"
+                android:text="About Us"
+                android:fontFamily="@font/poppins_bold"/>
 
             <TextView
                 android:id="@+id/about_us"
-                android:layout_width="230dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tempat nongkrong yang nyaman dancozzy tetapi ramah di kantong"
-                android:layout_margin="10dp"
+                android:layout_below="@id/abt"
                 android:layout_alignParentStart="true"
-                android:layout_below="@id/abt"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="11dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="#1A0700"
+                android:fontFamily="@font/poppins"
+                android:text="Tempat nongkrong yang nyaman dancozzy tetapi ramah di kantong" />
 
             <TextView
                 android:id="@+id/addrs"
@@ -135,44 +161,74 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/about_us"
                 android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+
                 android:text="Address"
-                android:layout_margin="10dp"/>
+                android:textColor="#1A0700"/>
 
             <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/addrs"
-                android:layout_margin="10dp"
-                android:text="Jl. Puncak Borobudur G502, Griya Shanta Blk. J No.216, Mojolangu, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+
+                android:layout_marginEnd="10dp"
+                android:textSize="11dp"
+                android:textColor="#1A0700"
+                android:fontFamily="@font/poppins"
+                android:layout_marginBottom="10dp"
+                android:text="Jl. Puncak Borobudur G502, Griya Shanta Blk. J No.216, Mojolangu, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142" />
 
             <TextView
                 android:id="@+id/hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HOURS"
                 android:layout_below="@id/address"
-                android:layout_margin="10dp"
-                />
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="#1A0700"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/open" />
 
             <Button
                 android:id="@+id/direction"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
                 android:layout_below="@id/hours"
                 android:layout_alignParentStart="true"
-                android:layout_margin="40dp"
-                android:text="Direction"/>
+                android:textColor="#4D4D4D"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_medium"
+                android:background="@drawable/button_menu_cafe"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="230dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="40dp"
+                android:text="Direction" />
 
             <Button
                 android:id="@+id/booknow"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:textColor="#4D4D4D"
+                android:textAllCaps="false"
                 android:layout_below="@id/hours"
+                android:fontFamily="@font/poppins_medium"
+                android:background="@drawable/button_menu_cafe"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="230dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="40dp"
                 android:text="Book Now"/>
+
         </RelativeLayout>
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 

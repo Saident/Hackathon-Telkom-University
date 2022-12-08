@@ -1,8 +1,12 @@
 package com.example.hackathon_telkom_university;
 
+import com.google.android.gms.maps.model.Marker;
+
 import java.util.ArrayList;
 
 public class Class_Coffee {
+
+    Marker marker;
     public String
             name =null,
             imageref =null,
@@ -19,6 +23,15 @@ public class Class_Coffee {
             rate5 =null;
 
     public Class_Coffee(){}
+
+    public Class_Coffee(Marker marker){
+        this.marker = marker;
+    }
+
+    public String markerGetName(Marker marker){
+        this.marker = marker;
+        return marker.getTitle();
+    }
 
     public Class_Coffee(String name, String imageref, String profilePic, String address, String lat, String longt, String about_us, String noReserve, String rate1, String rate2, String rate3, String rate4, String rate5) {
         this.name = name;

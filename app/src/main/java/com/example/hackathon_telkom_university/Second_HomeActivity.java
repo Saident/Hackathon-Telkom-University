@@ -6,22 +6,30 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
@@ -37,11 +45,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Second_HomeActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     protected TextView getuser;
+    protected Button direction, booknow;
+    protected ImageView imageCafe, profile, remover;
+    protected TextView cafe_name, about_us, address;
+    protected Context context;
+
     protected String name;
     private static final String TAG = Second_HomeActivity.class.getSimpleName();
     protected final int LOCATION_PERMISSION_CODE = 101;
@@ -49,6 +64,7 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
     protected ArrayList<Class_Coffee> listSatu = new ArrayList<>();
     protected DatabaseReference database;
     protected SlidingUpPanelLayout slidingUpPanelLayout;
+    protected List<Marker> listMarker = new ArrayList<>();
     private CameraPosition cameraPosition;
 
     @Override
@@ -117,11 +133,6 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        GoogleMapOptions options = new GoogleMapOptions();
-//        options.mapId(String.valueOf(R.string.map_id))
-//                .compassEnabled(true)
-//                .rotateGesturesEnabled(false)
-//                .tiltGesturesEnabled(false);
         try {
             boolean success = googleMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
@@ -140,20 +151,25 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
 
             double lat = -7.977050292059499, longt = 112.63405731852441;
             LatLng latLng = new LatLng(lat, longt);
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(latLng);
-//            CameraUpdate cameraUpdate2 = CameraUpdateFactory.zoomBy(10);
+            CameraPosition cameraPosition = CameraPosition.fromLatLngZoom(latLng, 15);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 5);
             mMap.animateCamera(cameraUpdate);
+
             getDataLocation();
 
-            if (mMap != null){
-                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(@NonNull Marker marker) {
-                        marker.getTitle();
-                        return true;
-                    }
-                });
-            }
+            mMap.setOnCameraMoveListener(() -> {
+                for(Marker m:listMarker){
+                    m.setVisible(mMap.getCameraPosition().zoom>10);
+                }
+            });
+
+            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(@NonNull Marker marker) {
+                    showPanelUp(marker);
+                    return true;
+                }
+            });
 //            mMap.animateCamera(cameraUpdate2);
         }
     }
@@ -167,8 +183,52 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
         }
     }
 
-    private void showBottomSheetDialog() {
+    private ArrayList<Class_Coffee> getCoffee(){
+        for (Class_Coffee coffee : listSatu){
+            getCoffee().add(coffee);
+        }
+        return getCoffee();
+    }
+
+    private void showPanelUp(Marker marker) {
+        cafe_name = findViewById(R.id.cafe_name);
+        about_us = findViewById(R.id.about_us);
+        address = findViewById(R.id.address);
+        imageCafe = findViewById(R.id.imageCafe);
+        imageCafe.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        profile = findViewById(R.id.profile_pic_cafe);
+        remover = findViewById(R.id.remover);
+
         slidingUpPanelLayout = findViewById(R.id.sliding_layout);
+        slidingUpPanelLayout.setVisibility(View.VISIBLE);
+        database = FirebaseDatabase.getInstance().getReference("Coffee");
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listSatu.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
+                    listSatu.add(post);
+                    if (marker.getTitle().contains(post.getNameCoffee())){
+                        cafe_name.setText(post.getNameCoffee());
+                        about_us.setText(post.getAbout_us());
+                        address.setText(post.getAddress());
+                        Glide.with(Second_HomeActivity.this).load(post.getImageref()).into(imageCafe);
+                        Glide.with(Second_HomeActivity.this).load(post.getProfilePic()).into(profile);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        remover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                slidingUpPanelLayout.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void requestLocationPermission(){
@@ -186,10 +246,14 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
                     Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
                     listSatu.add(post);
                     LatLng listingPosition = new LatLng(Double.valueOf(post.getLat()), Double.valueOf(post.getLongt()));
-                    Marker mapMarker = mMap.addMarker(new MarkerOptions()
+                    BitmapDescriptor customMarker = BitmapDescriptorFactory.fromResource(R.drawable.marker);
+                    Marker mMarker = mMap.addMarker(new MarkerOptions()
                             .position(listingPosition)
-                            .title(post.getName())
-                            .snippet(post.getAddress()));
+                            .title(post.getNameCoffee())
+                            .snippet(post.getAddress())
+                            .visible(false)
+                            .icon(customMarker));
+                    listMarker.add(mMarker);
                 }
             }
             @Override
