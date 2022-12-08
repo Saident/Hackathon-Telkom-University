@@ -9,16 +9,17 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -27,13 +28,14 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mapbox.maps.MapView;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 
@@ -46,6 +48,7 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
     private GoogleMap mMap;
     protected ArrayList<Class_Coffee> listSatu = new ArrayList<>();
     protected DatabaseReference database;
+    protected SlidingUpPanelLayout slidingUpPanelLayout;
     private CameraPosition cameraPosition;
 
     @Override
@@ -141,6 +144,16 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
 //            CameraUpdate cameraUpdate2 = CameraUpdateFactory.zoomBy(10);
             mMap.animateCamera(cameraUpdate);
             getDataLocation();
+
+            if (mMap != null){
+                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(@NonNull Marker marker) {
+                        marker.getTitle();
+                        return true;
+                    }
+                });
+            }
 //            mMap.animateCamera(cameraUpdate2);
         }
     }
@@ -152,6 +165,10 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
         }else {
             return false;
         }
+    }
+
+    private void showBottomSheetDialog() {
+        slidingUpPanelLayout = findViewById(R.id.sliding_layout);
     }
 
     private void requestLocationPermission(){

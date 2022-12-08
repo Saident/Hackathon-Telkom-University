@@ -59,12 +59,42 @@ public class Second_SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        tv_rec = findViewById(R.id.tv_rec);
+        tv_rec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Third_RecommendActivity.class));
+                overridePendingTransition(0,0);
+                onPause();
+            }
+        });
+        tv_coffee = findViewById(R.id.tv_coffee);
+        tv_coffee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Third_CoffeeActivity.class));
+                overridePendingTransition(0,0);
+                onPause();
+            }
+        });
+        tv_working = findViewById(R.id.tv_working);
+        tv_working.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Third_CoWorkingActivity.class));
+                overridePendingTransition(0,0);
+                onPause();
+            }
+        });
+
         //initialize recView
         buildRecomm();
         buildCoffee();
         buildWorking();
         buildSearchView();
         buildSearch();
+
+
 
         botNav();
 
