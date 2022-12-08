@@ -35,6 +35,11 @@ public class First_LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
 
+        if (mAuth.getCurrentUser() != null){
+            startActivity(new Intent(First_LoginActivity.this, Second_HomeActivity.class));
+            finish();
+        }
+
         //initialize
         button_login = findViewById(R.id.button_login);
         button_login.setOnClickListener(new View.OnClickListener() {
@@ -58,24 +63,6 @@ public class First_LoginActivity extends AppCompatActivity{
                 startActivity(new Intent(getApplicationContext(), First_RegisterActivity.class));
             }
         });
-//
-//        username = findViewById(R.id.username);
-//        password = findViewById(R.id.password);
-//
-//        google_login = findViewById(R.id.google_login);
-//        google_login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-//        facebook_login = findViewById(R.id.facebook_login);
-//        facebook_login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
         //end of initialize
     }
 

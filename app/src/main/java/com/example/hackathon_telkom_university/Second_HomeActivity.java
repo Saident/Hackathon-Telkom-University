@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +58,8 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
     protected TextView cafe_name, about_us, address;
     protected Context context;
 
+    protected RatingBar ratingBar;
+
     protected String name;
     private static final String TAG = Second_HomeActivity.class.getSimpleName();
     protected final int LOCATION_PERMISSION_CODE = 101;
@@ -71,6 +74,14 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        direction = findViewById(R.id.direction);
+        direction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Second_HomeActivity.this, "Direction not implemented yet", Toast.LENGTH_SHORT);
+            }
+        });
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -210,6 +221,7 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
                     Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
                     listSatu.add(post);
                     if (marker.getTitle().contains(post.getNameCoffee())){
+                        getRating(post);
                         cafe_name.setText(post.getNameCoffee());
                         about_us.setText(post.getAbout_us());
                         address.setText(post.getAddress());
@@ -260,6 +272,25 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    private void getRating(Class_Coffee post){
+        Float ratingTotal = Float.valueOf(post.getRate1()) +
+                        Float.valueOf(post.getRate2()) +
+                        Float.valueOf(post.getRate3()) +
+                        Float.valueOf(post.getRate4()) +
+                        Float.valueOf(post.getRate5());
+
+        Float rating1 = Float.valueOf(post.getRate1());
+        Float rating2 = Float.valueOf(post.getRate2())*2;
+        Float rating3 = Float.valueOf(post.getRate3())*3;
+        Float rating4 = Float.valueOf(post.getRate4())*4;
+        Float rating5 = Float.valueOf(post.getRate5())*5;
+
+        Float total = rating1 + rating2 + rating3 + rating4 + rating5;
+        Float hasil = total/ratingTotal;
+        ratingBar = findViewById(R.id.ratingBar);
+        ratingBar.setRating(hasil);
     }
 
     @Override
