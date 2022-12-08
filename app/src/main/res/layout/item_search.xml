@@ -19,14 +19,17 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="120dp">
+        android:gravity="center"
+        >
         <TextView
             android:id="@+id/rec_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sekawan"
-            android:textColor="@color/black"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/bg_text_topleft"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

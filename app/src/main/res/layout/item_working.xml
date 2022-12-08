@@ -8,6 +8,7 @@
     card_view:cardCornerRadius="5dp"
     android:layout_marginHorizontal="7dp"
     android:layout_marginBottom="10dp"
+    android:layout_gravity="center"
     >
     <ImageView
         android:id="@+id/iv_bg_coffee"
@@ -18,14 +19,18 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="120dp">
+        >
         <TextView
             android:id="@+id/rec_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sekawan"
-            android:textColor="@color/black"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/bg_text_center"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

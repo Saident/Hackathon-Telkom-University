@@ -8,22 +8,40 @@
     android:scrollbars="vertical"
     tools:context=".Second_SearchActivity">
 
-    <Button
+    <ImageView
+        android:id="@+id/bg_menu_coffee"
+        android:background="#E7DED0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        />
+
+
+    <ImageButton
         android:id="@+id/bt_filter"
         android:layout_width="44dp"
-        android:layout_height="48dp"
+        android:layout_height="44dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="43dp"
-        android:background="@color/grey"
+        android:background="@drawable/button_option"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/option_20px"
+        />
+
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_bar"
-        android:layout_width="326dp"
+        android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginTop="43dp"
-        android:background="@color/grey"
+        android:background="@drawable/bg_search"
         app:queryHint="Search Here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/bt_filter"
@@ -36,6 +54,8 @@
                 android:layout_marginTop="26dp"
                 android:text="Recommendation"
                 android:textSize="16sp"
+                android:textColor="#1A0700"
+                android:fontFamily="@font/poppins_bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/search_bar" />
@@ -49,7 +69,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_rec"
-                tools:listitem="@layout/item_recommend" />
+                tools:listitem="@layout/item_recommend"
+                />
 
             <TextView
                 android:id="@+id/tv_coffee"
@@ -58,6 +79,8 @@
                 android:layout_marginTop="26dp"
                 android:text="CoffeeShop"
                 android:textSize="16sp"
+                android:textColor="#1A0700"
+                android:fontFamily="@font/poppins_bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rec_recommend" />
@@ -80,6 +103,8 @@
                 android:layout_marginTop="26dp"
                 android:text="Working"
                 android:textSize="16sp"
+                android:textColor="#1A0700"
+                android:fontFamily="@font/poppins_bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rec_coffee" />
@@ -124,7 +149,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:itemBackground="@color/teal_700"
+        android:background="@drawable/navbar"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
