@@ -93,9 +93,6 @@ public class Second_SearchActivity extends AppCompatActivity {
         buildWorking();
         buildSearchView();
         buildSearch();
-
-
-
         botNav();
 
     }
@@ -161,7 +158,7 @@ public class Second_SearchActivity extends AppCompatActivity {
         linearSearch = findViewById(R.id.linearSearch);
         rec_search = findViewById(R.id.rec_search);
         List<Class_Coffee> filteredList = new ArrayList<>();
-        for (Class_Coffee classCoffee : listSatu){
+        for (Class_Coffee classCoffee : listSearch){
             if (classCoffee.getNameCoffee().toLowerCase().contains(s.toLowerCase())){
                 filteredList.add(classCoffee);
             }
@@ -212,7 +209,9 @@ public class Second_SearchActivity extends AppCompatActivity {
                 listSatu.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
-                    listSatu.add(post);
+                    if (Integer.valueOf(post.getRate5()) > 600){
+                        listSatu.add(post);
+                    }
                 }
                 adapter_recomm.notifyDataSetChanged();
             }
@@ -237,7 +236,9 @@ public class Second_SearchActivity extends AppCompatActivity {
                 listDua.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
-                    listDua.add(post);
+                    if (post.getNameCoffee().toLowerCase().contains("Coffee".toLowerCase())){
+                        listDua.add(post);
+                    }
                 }
                 adapter_coffee.notifyDataSetChanged();
             }
@@ -262,7 +263,9 @@ public class Second_SearchActivity extends AppCompatActivity {
                 listTiga.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
-                    listTiga.add(post);
+                    if (post.getNameCoffee().toLowerCase().contains("Working".toLowerCase())){
+                        listTiga.add(post);
+                    }
                 }
                 adapter_working.notifyDataSetChanged();
             }

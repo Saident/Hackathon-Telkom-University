@@ -14,8 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_Coffee extends RecyclerView.Adapter<Adapter_Coffee.MyView> {
-    private ArrayList<Class_Coffee> list;
+    private List<Class_Coffee> list;
     private Context context;
+
+    public void setFilteredList(List<Class_Coffee> filteredList){
+        this.list = filteredList;
+        notifyDataSetChanged();
+    }
 
     public class MyView extends RecyclerView.ViewHolder {
         TextView name;
