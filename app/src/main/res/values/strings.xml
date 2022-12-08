@@ -9,6 +9,7 @@
     <string name="register"><font color="000000">Didn’t have an account? </font><u>Register Here.</u></string>
     <string name="have_account"><font color="@color/white">already have an account? </font><font color="000000"><u>Login.</u></font></string>
     <string name="map_id">78862ec95d092034</string>
+    <string name="open"><font color="#1A0700" family="@font/poppins_bold">Hours :  </font><font color="#037E00">Open</font><font color="#1A0700" family="@font/poppins"> - Closes 12AM</font></string>
 
     <!--    MapBox API TOKEN-->
     <string name="mapbox_access_token">sk.eyJ1Ijoic2FpZGVudCIsImEiOiJjbGFmazI1d20xNHVlM3FzM3Q4c3ltZ3RiIn0.uf_Szw_dBgIzLpCpIX7gOg</string>
