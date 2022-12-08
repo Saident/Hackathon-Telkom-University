@@ -23,7 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Second_ProfileActivity extends AppCompatActivity {
 
-    protected RelativeLayout logout, edit_profile;
+    protected RelativeLayout logout, edit_profile, favorite,
+            setting, security, report, term;
     TextView profile_name;
 
     @Override

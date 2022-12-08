@@ -9,6 +9,6 @@ public class zzComingSoon extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zz_coming_soon);
+        setContentView(R.layout.activity_splash);
     }
 }
