@@ -9,10 +9,10 @@
     android:layout_height="match_parent"
     tools:context=".Second_HomeActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/map"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
 <!--    <com.google.android.gms.maps.MapView-->
 <!--        android:id="@+id/map"-->
@@ -29,9 +29,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="30dp"
-        android:text="Hello, User"
+        android:text="Hello User!"
+        android:textColor="#4B3516"
+        android:fontFamily="@font/poppins_medium"
         android:textSize="40sp"
         android:textStyle="bold"/>
 
@@ -39,10 +41,10 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:itemBackground="@color/teal_700"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:itemBackground="@color/cream"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
