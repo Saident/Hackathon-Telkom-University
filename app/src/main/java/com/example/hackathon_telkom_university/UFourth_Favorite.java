@@ -49,7 +49,7 @@ public class UFourth_Favorite extends AppCompatActivity {
         });
 
         buildSearch();
-        buildSearchView();
+//        buildSearchView();
         botNav();
     }
 
