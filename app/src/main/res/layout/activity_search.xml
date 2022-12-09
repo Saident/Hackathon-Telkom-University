@@ -124,12 +124,11 @@
         android:id="@+id/linearSearch"
         android:layout_width="match_parent"
         android:layout_height="570dp"
-        android:background="@color/white"
+        android:background="#E7DED0"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/search_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation">
+        app:layout_constraintEnd_toEndOf="parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_search"
             android:layout_width="match_parent"

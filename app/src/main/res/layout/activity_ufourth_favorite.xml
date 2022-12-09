@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="50dp"
-        android:text="Coffeeshop"
+        android:text="Favorite"
         android:fontFamily="@font/poppins_bold"
         android:textColor="#1A0700"
         />
@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="horizontal">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rec_search"
+            android:id="@+id/rec_fav"
             android:layout_width="match_parent"
             android:layout_height="570dp"
             android:scrollbars="vertical"

@@ -67,6 +67,14 @@ public class Second_ProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(Second_ProfileActivity.this, Third_EditProfileActivity.class));
             }
         });
+
+        favorite = findViewById(R.id.layout_favorite);
+        favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Second_ProfileActivity.this, UFourth_Favorite.class));
+            }
+        });
         botNav();
     }
 

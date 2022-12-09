@@ -49,9 +49,6 @@ public class First_RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {registerUser();}});
 
-        google_login = findViewById(R.id.google_login);
-        facebook_login = findViewById(R.id.facebook_login);
-
         regtologin = findViewById(R.id.tv_regtologin);
         regtologin.setOnClickListener(new View.OnClickListener() {
             @Override

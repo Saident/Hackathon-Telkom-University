@@ -27,8 +27,6 @@ public class First_LoginActivity extends AppCompatActivity{
     protected EditText username, password;
     protected TextView forgot_password, register;
     protected Button button_login;
-    protected ImageView google_login, facebook_login;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
