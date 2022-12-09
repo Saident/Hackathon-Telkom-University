@@ -35,6 +35,46 @@ public class Second_ProfileActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
+        setting = findViewById(R.id.layout_settings);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), zzComingSoon.class));
+                overridePendingTransition(0,0);
+                onPause();
+            }
+        });
+
+        security = findViewById(R.id.layout_security);
+        security.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), zzComingSoon.class));
+                overridePendingTransition(0,0);
+                onPause();
+            }
+        });
+
+        report = findViewById(R.id.layout_report);
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), zzComingSoon.class));
+                overridePendingTransition(0,0);
+                onPause();
+            }
+        });
+
+        term = findViewById(R.id.layout_term);
+        term.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), zzComingSoon.class));
+                overridePendingTransition(0,0);
+                onPause();
+            }
+        });
+
         profile_name = findViewById(R.id.profile_name);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
