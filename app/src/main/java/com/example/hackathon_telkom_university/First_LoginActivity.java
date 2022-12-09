@@ -33,11 +33,6 @@ public class First_LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
 
-        if (mAuth.getCurrentUser() != null){
-            startActivity(new Intent(First_LoginActivity.this, Second_HomeActivity.class));
-            finish();
-        }
-
         //initialize
         button_login = findViewById(R.id.button_login);
         button_login.setOnClickListener(new View.OnClickListener() {

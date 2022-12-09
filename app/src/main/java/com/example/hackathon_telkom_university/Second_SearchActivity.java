@@ -164,7 +164,6 @@ public class Second_SearchActivity extends AppCompatActivity {
             }
         }
         if (filteredList.isEmpty()){
-            Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
             filteredList.clear();
             adapter_search.setFilteredList(filteredList);
         }else {

@@ -15,7 +15,7 @@ public class zzComingSoon extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zz_coming_soon);
 
-        back = findViewById(R.id.back);
+        back = findViewById(R.id.button_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
