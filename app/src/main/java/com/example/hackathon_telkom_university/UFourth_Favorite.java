@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,11 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Third_RecommendActivity extends AppCompatActivity {
-
+public class UFourth_Favorite extends AppCompatActivity {
     protected ArrayList<Class_Coffee> listSearch = new ArrayList<Class_Coffee>();
-    protected RecyclerView rec_search;
+    protected RecyclerView rec_fav;
     protected LinearLayout linearSearch;
     protected Adapter_Individual adapter_search;
     protected androidx.appcompat.widget.SearchView searchView;
@@ -39,7 +38,7 @@ public class Third_RecommendActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third_recommend);
+        setContentView(R.layout.activity_ufourth_favorite);
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +49,7 @@ public class Third_RecommendActivity extends AppCompatActivity {
         });
 
         buildSearch();
-        buildSearchView();
+//        buildSearchView();
         botNav();
     }
 
@@ -111,7 +110,7 @@ public class Third_RecommendActivity extends AppCompatActivity {
 
     private void filterList(String s) {
         linearSearch = findViewById(R.id.linearSearch);
-        rec_search = findViewById(R.id.rec_search);
+        rec_fav = findViewById(R.id.rec_fav);
         List<Class_Coffee> filteredList = new ArrayList<>();
         for (Class_Coffee classCoffee : listSearch){
             if (classCoffee.getNameCoffee().toLowerCase().contains(s.toLowerCase())){
@@ -119,7 +118,6 @@ public class Third_RecommendActivity extends AppCompatActivity {
             }
         }
         if (filteredList.isEmpty()){
-            Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
             filteredList.clear();
             adapter_search.setFilteredList(filteredList);
         }else {
@@ -128,20 +126,20 @@ public class Third_RecommendActivity extends AppCompatActivity {
     }
 
     private void buildSearch(){
-        rec_search = (RecyclerView)findViewById(R.id.rec_search);
+        rec_fav = (RecyclerView)findViewById(R.id.rec_fav);
         listSearch = new ArrayList<Class_Coffee>();
-        database = FirebaseDatabase.getInstance().getReference("Coffee");
+        database = FirebaseDatabase.getInstance().getReference().child("Users")
+                .child(FirebaseAuth.getInstance().getUid())
+                .child("Favorite");
         adapter_search = new Adapter_Individual(this,listSearch);
-        rec_search.setAdapter(adapter_search);
+        rec_fav.setAdapter(adapter_search);
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listSearch.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Class_Coffee post = dataSnapshot.getValue((Class_Coffee.class));
-                    if (Integer.valueOf(post.getRate5()) > 600){
                         listSearch.add(post);
-                    }
                 }
                 adapter_search.notifyDataSetChanged();
             }
@@ -149,8 +147,8 @@ public class Third_RecommendActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        VerticalLayout = new LinearLayoutManager(Third_RecommendActivity.this,
+        VerticalLayout = new LinearLayoutManager(UFourth_Favorite.this,
                 LinearLayoutManager.VERTICAL, false);
-        rec_search.setLayoutManager(VerticalLayout);
+        rec_fav.setLayoutManager(VerticalLayout);
     }
 }

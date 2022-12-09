@@ -180,9 +180,10 @@
         android:text="@string/have_account"
         android:textSize="14sp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
     <TextView
@@ -199,40 +200,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_register"
         />
-
-    <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/or"
-        android:gravity="center_horizontal"
-        android:id="@+id/layout_logo"
-        >
-
-        <ImageView
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/or"
-            android:id="@+id/google_login"
-            android:layout_marginTop="10dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            app:srcCompat="@drawable/gugel_icon"
-            />
-
-        <ImageView
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/or"
-            android:id="@+id/facebook_login"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            app:srcCompat="@drawable/facebook"
-            />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

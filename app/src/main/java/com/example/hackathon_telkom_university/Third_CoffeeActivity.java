@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -28,15 +29,26 @@ public class Third_CoffeeActivity extends AppCompatActivity {
     protected ArrayList<Class_Coffee> listSearch = new ArrayList<Class_Coffee>();
     protected RecyclerView rec_search;
     protected LinearLayout linearSearch;
-    protected Adapter_Search adapter_search;
+    protected Adapter_Individual adapter_search;
     protected androidx.appcompat.widget.SearchView searchView;
     protected DatabaseReference database;
     protected LinearLayoutManager VerticalLayout;
+
+    protected ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_coffee);
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         buildSearch();
         buildSearchView();
         botNav();
@@ -119,7 +131,7 @@ public class Third_CoffeeActivity extends AppCompatActivity {
         rec_search = (RecyclerView)findViewById(R.id.rec_search);
         listSearch = new ArrayList<Class_Coffee>();
         database = FirebaseDatabase.getInstance().getReference("Coffee");
-        adapter_search = new Adapter_Search(this,listSearch);
+        adapter_search = new Adapter_Individual(this,listSearch);
         rec_search.setAdapter(adapter_search);
         database.addValueEventListener(new ValueEventListener() {
             @Override

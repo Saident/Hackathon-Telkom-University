@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,7 +31,7 @@ public class Adapter_Individual extends RecyclerView.Adapter<Adapter_Individual.
     public class MyView extends RecyclerView.ViewHolder {
         TextView name;
         ImageView images;
-        Button love;
+        ImageButton love;
 
         public MyView(View view) {
             super(view);
@@ -59,10 +61,10 @@ public class Adapter_Individual extends RecyclerView.Adapter<Adapter_Individual.
         holder.love.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().child("users")
+                Toast.makeText(context, "Added to Favorite", Toast.LENGTH_SHORT);
+                FirebaseDatabase.getInstance().getReference().child("Users")
                         .child(FirebaseAuth.getInstance().getUid())
-                        .child("fav").child(coffee.getName())
-                        .setValue(coffee);
+                        .child("Favorite").child(String.valueOf(coffee.getName())).setValue(coffee);
 
             }
         });

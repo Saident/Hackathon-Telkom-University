@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -80,6 +81,16 @@ public class Second_HomeActivity extends AppCompatActivity implements OnMapReady
             @Override
             public void onClick(View view) {
                 Toast.makeText(Second_HomeActivity.this, "Direction not implemented yet", Toast.LENGTH_SHORT);
+            }
+        });
+
+        booknow = findViewById(R.id.booknow);
+        booknow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), zzComingSoon.class));
+                overridePendingTransition(0,0);
+                onPause();
             }
         });
 
